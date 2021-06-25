@@ -20,7 +20,7 @@ class BaseModel:
                 if keys != "__class__":
                     if keys == "created_at" or "updated_at":
                         value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                setattr(self, keys, value)
+                    setattr(self, keys, value)
 
     def __str__(self):
         """ string representation """
