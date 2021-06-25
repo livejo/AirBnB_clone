@@ -16,7 +16,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = self.created_at
         else:
-            for keys, value in kwargs.items:
+            for keys, value in kwargs.items():
                 if keys != "__class__":
                     if keys == "created_at" or "updated_at":
                         value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
