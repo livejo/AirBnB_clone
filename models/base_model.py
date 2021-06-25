@@ -11,16 +11,16 @@ class BaseModel:
     """ defining base model class """
     def __init__(self, *args, **kwargs):
         """ defines id, created_at and updated_at """
-        if len(kwargs) == 0:
+        if kwargs:
+            for keys, val in kwargs.items():
+                if keys != "__class__":
+                    if keys == "created_at" or keys == "updated_at":
+                        val = datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, keys, val)
+        else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
-        else:
-            for keys, value in kwargs.items():
-                if keys != "__class__":
-                    if keys == "created_at" or "updated_at":
-                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
-                    setattr(self, keys, value)
 
     def __str__(self):
         """ string representation """
