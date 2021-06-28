@@ -10,6 +10,8 @@ from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """ a command line interpreter """
+    prompt = '(hbnb)'
+
     def do_quit(self, s):
         """ exit operation """
         return True
@@ -24,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_help(self):
         """ help prompt """
-        print "(hbnb)"
+        print prompt
 
  
 if __name__ == '__main__':
