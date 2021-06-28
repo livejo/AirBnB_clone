@@ -24,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         """ empty line + ENTER shouldn’t execute anything """
         return False
 
-    def do_help(self):
+    def do_help(self, s):
         """ help prompt """
         return prompt
 
