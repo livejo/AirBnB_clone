@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 eval(s[0])
             except:
-                print('** class doesn't exist **')
+                print("** class doesn't exist **")
         if len(arg) == 1:
             print('** instance id missing **')
         models.storage.reload()
@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             try:
                 eval(s[0])
             except:
-                print('** class doesn't exist **')
+                print("** class doesn't exist **")
         if len(arg) == 1:
             print('** instance id missing **')
         else:
