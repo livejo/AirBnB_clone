@@ -34,8 +34,8 @@ class HBNBCommand(cmd.Cmd):
             print('** class name missing **')
         else:
             try:
-                args = s.split
-                new = eval("{}()".format(s[0]))
+                args = s.split()
+                new = eval("{}()".format(args[0]))
                 new.save()
                 print(new.id)
             except:
