@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) == 1:
             print('** instance id missing **')
         models.storage.reload()
-        for key, val in models.storage.all.items():
+        for key, val in models.storage.all().items():
             if val.__class__.__name__ == arg[0] and val == arg[1]:
                 print(val.__str__())
                 return
