@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_help(self):
         """ help prompt """
-        print prompt
+        print '(hbnb)'
 
  
 if __name__ == '__main__':
