@@ -1,13 +1,14 @@
 #!/usr/bin/python3
 """
- class Place that inherits from BaseModel
+    Place modules
 """
 from models.base_model import BaseModel
 
 
-
 class Place(BaseModel):
-    """ defining User class """
+    """
+        Place Class inherit from base
+    """
     city_id = ""
     user_id = ""
     name = ""
@@ -22,6 +23,6 @@ class Place(BaseModel):
 
     def __init__(self, *args, **kwargs):
         """
-            Init
+            init
         """
         super().__init__(*args, **kwargs)
