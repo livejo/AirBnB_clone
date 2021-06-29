@@ -54,13 +54,16 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 print("** class doesn't exist **")
         if len(arg) == 1:
-            print('** instance id missing **')
-        models.storage.reload()
-        for key, val in models.storage.all().items():
-            if val.__class__.__name__ == arg[0] and val == arg[1]:
-                print(val.__str__())
-                return
-        print('** no instance found **')
+            print("** instance id missing **")
+        else:
+            storage.reload()
+            obj = storage.all()
+            key_id = arg[0] + "." + arg[1]
+            if key_id in obj:
+                val = obj[key_id]
+                print(val)
+            else:
+                print("** no instance found **")
 
     def do_destroy(self, s):
         """ deletes an instance
