@@ -188,7 +188,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                     return
             except Exception as ex:
-                print("** class doesn't exist **")
+                print("** classs doesn't exist **")
 
 
 if __name__ == '__main__':
