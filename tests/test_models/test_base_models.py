@@ -36,7 +36,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_pep8_base_model(self):
         """Test to PEP8."""
-        pep8s = pep8.StyleGuide(quiet=True)
+        pep8s = pep8s.StyleGuide(quiet=True)
         res = pep8s.check_files(['models/base_model.py'])
         self.assertEqual(res.total_errors, 0,
                          "Found code style errors (and warnings).")
