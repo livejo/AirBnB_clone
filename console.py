@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                     return
             except Exception:
-                print("** class doesn't exist **")
+                print("** class1 doesn't exist **")
                 return
         if len(args) >= 2:
             try:
@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** attribute name missing **")
                     return
             except Exception:
-                print("** class doesn't exist **")
+                print("** class2 doesn't exist **")
                 return
 
         if len(args) >= 3:
@@ -159,7 +159,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** value missing **")
                     return
             except Exception:
-                print("** class doesn't exist **")
+                print("** class3 doesn't exist **")
                 return
         if len(args) >= 4:
             args = " ".join(str(arg).split(maxsplit=3)).split(maxsplit=3)
