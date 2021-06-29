@@ -69,25 +69,27 @@ class HBNBCommand(cmd.Cmd):
         """ deletes an instance
             based on the class name and id
         """
-        arg = s.split()
-        cont = []
-        if len(arg) == 0:
-            print('** class name missing **')
+        args = s.split()
+        obj = []
+        if len(args) == 0:
+            print("** class name missing **")
+            return
+        try:
+            eval(args[0])
+        except Exception:
+            print("** class doesn't exist **")
+            return
+        if len(args) == 1:
+            print("** instance id missing **")
         else:
-            try:
-                eval(s[0])
-            except Exception:
-                print("** class doesn't exist **")
-        if len(arg) == 1:
-            print('** instance id missing **')
-            return
-        class_name, class_id = (arg[0], arg[1])
-        query_key = class_name + '.' + class_id
-        if query_key not in models.storage.all().keys():
-            print("** no instance found **")
-            return
-        del models.storage.all()[query_key]
-        models.storage.save()
+            storage.reload()
+            obj = storage.all()
+            key_id = args[0] + "." + args[1]
+            if key_id in obj:
+                del obj[key_id]
+                storage.save()
+            else:
+                print("** no instance found **")
 
     def do_all(self, s):
         """ Prints all string representation of all instances """
