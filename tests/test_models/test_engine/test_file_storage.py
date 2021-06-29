@@ -45,9 +45,6 @@ class TestFileStorage(unittest.TestCase):
         is_readable = os.access(path, os.R_OK)
         self.assertTrue(is_readable)
 
-        is_executable = os.access(path, os.X_OK)
-        self.assertTrue(is_executable)
-
         is_writable = os.access(path, os.W_OK)
         self.assertTrue(is_writable)
 
@@ -56,9 +53,6 @@ class TestFileStorage(unittest.TestCase):
         path = 'models/engine/file_storage.py'
         is_readable = os.access(path, os.R_OK)
         self.assertTrue(is_readable)
-
-        is_executable = os.access(path, os.X_OK)
-        self.assertTrue(is_executable)
 
         is_writable = os.access(path, os.W_OK)
         self.assertTrue(is_writable)
