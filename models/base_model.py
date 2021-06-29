@@ -15,7 +15,8 @@ class BaseModel:
             for keys, val in kwargs.items():
                 if keys != "__class__":
                     if keys == "created_at" or keys == "updated_at":
-                        val = datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f")
+                        val = datetime.strptime(val,
+                                                "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, keys, val)
         else:
             self.id = str(uuid4())
@@ -26,7 +27,8 @@ class BaseModel:
 
     def __str__(self):
         """ string representation """
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__,
+                                         self.id, self.__dict__)
 
     def save(self):
         """ updates attr updated_at """
