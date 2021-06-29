@@ -24,7 +24,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(models.base_model.BaseModel.__doc__, res)
 
     def test_doc3(self):
-        """test documentation for methods"""
+        """testing for methods"""
         res = "method init has no documenation"
         self.assertIsNotNone(models.base_model.BaseModel.__init__.__doc__, res)
         res1 = "method __str__ has no documenation"
@@ -33,5 +33,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(models.base_model.BaseModel.save.__doc__, res2)
         res3 = "method to_dict has no documenation"
         self.assertIsNotNone(models.base_model.BaseModel.to_dict.__doc__, res3)
-        
-    
