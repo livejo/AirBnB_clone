@@ -3,6 +3,7 @@
 contains the entry point of the command interpreter
 """
 import cmd
+import shlex
 import os
 import models
 from models import BaseModel, User, Amenity, Review, City, Place, State
@@ -115,80 +116,37 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
                 return
 
-    def do_update(self, s):
+    def do_update(self, _input):
+        """Updates an instance based on the class name and id
         """
-        Update command Updates an instance based on the class name and id
-        by adding or updating attribute
-        (save the change into the JSON file).
-        """
-        storage.reload()
-        args = s.split()
-        if len(args) == 0:
+        _input = shlex.split(_input)
+        query_key = ''
+
+        if len(_input) is 0:
             print("** class name missing **")
             return
-        if len(args) >= 1:
-            try:
-                eval(args[0])
-                if len(args) == 1:
-                    print("** instance id missing **")
-                    return
-                try:
-                    key_id = args[0] + "." + args[1]
-                    container_obj = storage.all()
-                    container_obj[key_id]
-                except Exception:
-                    print("** no instance found **")
-                    return
-            except Exception:
-                print("** class doesn't exist **")
-                return
-        if len(args) >= 2:
-            try:
-                eval(args[0])
-                if len(args) == 2:
-                    print("** attribute name missing **")
-                    return
-            except Exception:
-                print("** class doesn't exist **")
-                return
+        if _input[0] not in self.collection_keys:
+            print("** class doesn't exist **")
+            return
+        if len(_input) is 1:
+            print("** instance id missing **")
+            return
+        if len(_input) > 1:
+            query_key = _input[0] + '.' + _input[1]
+        if query_key not in models.storage.all().keys():
+            print("** no instance found **")
+            return
+        if len(_input) is 2:
+            print('** attribute name missing **')
+            return
+        if len(_input) is 3:
+            print('** value missing **')
+            return
+        key_name = _input[2]
+        input_value = _input[3]
+        setattr(models.storage.all()[query_key], key_name, input_value)
 
-        if len(args) >= 3:
-            try:
-                eval(args[0])
-                if len(args) == 3:
-                    print("** value missing **")
-                    return
-            except Exception:
-                print("** class doesn't exist **")
-                return
-        if len(args) >= 4:
-            args = " ".join(str(args).split(maxsplit=3)).split(maxsplit=3)
-
-            class_name = args[0]
-            obj_id = args[1]
-            obj_attr = args[2].strip("\"\'")
-            obj_new_val = args[3]
-            try:
-                eval(class_name)
-                key_id = class_name + "." + obj_id
-                container_obj = storage.all()
-                if key_id in container_obj:
-                    obj = container_obj[key_id]
-                    try:
-                        type_attr = type(getattr(obj, obj_attr))
-                        obj_new_val = self.same_type_as_attr(obj_new_val,
-                                                             type_attr)
-                        if obj_new_val is False:
-                            return
-                    except Exception:
-                        obj_new_val = self.convert_new_val(obj_new_val)
-                    setattr(obj, obj_attr, obj_new_val)
-                    storage.save()
-                else:
-                    print("** no instance found **")
-                    return
-            except Exception as ex:
-                print("** class doesn't exist **")
+        models.storage.all()[query_key].save()
 
 
 if __name__ == '__main__':
