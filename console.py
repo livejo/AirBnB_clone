@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
                 return
         if len(args) >= 4:
-            args = " ".join(str(arg).split(maxsplit=3)).split(maxsplit=3)
+            args = " ".join(str(args).split(maxsplit=3)).split(maxsplit=3)
 
             class_name = args[0]
             obj_id = args[1]
