@@ -1,11 +1,8 @@
-#!/usr/bin/python3
-"""
- class Amenity that inherits from BaseModel
-"""
+#!/usr/bin/python
+""" class Amenity"""
 from models.base_model import BaseModel
 
 
-
 class Amenity(BaseModel):
-    """ defining User class """
+    """Representation of Amenity"""
     name = ""
