@@ -5,7 +5,6 @@
 from models.base_model import BaseModel
 
 
-
 class City(BaseModel):
     """ defining City class """
     name = ""
