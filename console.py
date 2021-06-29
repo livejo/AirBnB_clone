@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 contains the entry point of the command interpreter
 """
 import cmd
@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
                 new = eval("{}()".format(args[0]))
                 new.save()
                 print(new.id)
-            except:
+            except Exception:
                 print("** class doesn't exist **")
 
     def do_show(self, s):
@@ -51,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             try:
                 eval(s[0])
-            except:
+            except Exception:
                 print("** class doesn't exist **")
         if len(arg) == 1:
             print('** instance id missing **')
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             try:
                 eval(s[0])
-            except:
+            except Exception:
                 print("** class doesn't exist **")
         if len(arg) == 1:
             print('** instance id missing **')
@@ -99,21 +99,22 @@ class HBNBCommand(cmd.Cmd):
             print(lists)
             return
         if len(arg) == 1:
-             try:
-                 eval(arg[0])
-                 for arg_id in cont.keys():
-                     if type(cont[arg_id] is eval(arg[0])):
-                         obj = cont[arg_id]
-                         lists.append(str(obj))
-                 print(lists)
-             except Exception:
-                 print("** class doesn't exist **")
-                 return
+            try:
+                eval(arg[0])
+                for arg_id in cont.keys():
+                    if type(cont[arg_id] is eval(arg[0])):
+                        obj = cont[arg_id]
+                        lists.append(str(obj))
+                print(lists)
+            except Exception:
+                print("** class doesn't exist **")
+                return
+
     def do_update(self, s):
         """
         Update command Updates an instance based on the class name and id
         by adding or updating attribute
-        (save the change into the JSON file). 
+        (save the change into the JSON file).
         """
         storage.reload()
         args = s.split()
@@ -182,10 +183,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                     return
             except Exception as ex:
-                print("** class doesn't exist **")
-
-            
-            
+                print("** class doesn't exist **")            
 
 
 if __name__ == '__main__':
