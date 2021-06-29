@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
- class User that inherits from BaseModel
+ class City that inherits from BaseModel
 """
 from models.base_model import BaseModel
 
 
 
 class City(BaseModel):
-    """ defining User class """
+    """ defining City class """
     name = ""
     state_id = ""
 
