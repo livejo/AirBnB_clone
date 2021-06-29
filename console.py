@@ -5,8 +5,7 @@ contains the entry point of the command interpreter
 import cmd
 import os
 import models
-from models.base_model import BaseModel
-from models.user import User
+from models import BaseModel, User, Amenity, Review, City, Place, State
 
 storage = models.storage
 
