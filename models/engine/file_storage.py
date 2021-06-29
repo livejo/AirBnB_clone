@@ -13,7 +13,6 @@ from models.state import State
 from models.amenity import Amenity
 
 
-
 class FileStorage:
     """ String representing a simple data structure in JSON format.
         ex: '{ "12": { "numbers": [1, 2, 3], "name": "John" } }'
@@ -26,7 +25,7 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """ 
+        """
         sets in __objects the obj with key <obj class name>.id
         """
         dict_key = obj.__class__.__name__ + '.' + obj.id
