@@ -67,3 +67,16 @@ class TestFileStorage(unittest.TestCase):
         """test instance"""
         storage = FileStorage()
         self.assertIsInstance(storage, FileStorage)
+
+    @classmethod
+    def setUps(s):
+        """set up for test"""
+        s.user = User()
+        s.user.first_name = "Yos"
+        s.user.last_name = "Kal"
+        s.user.email = "yoo@gmail.com"
+        s.storage = FileStorage()
+        s.path = "file.json"
+
+if __name__ == "__main__":
+    unittest.main()
