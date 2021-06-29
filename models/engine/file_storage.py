@@ -5,6 +5,7 @@ FileStorage that serializes and deserializes instances to a JSON file
 import json
 import os.path
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -38,3 +39,5 @@ class FileStorage:
         if os.path.isfile(self.__file_path):
             with open(self.__file_path, "r") as f:
                 json_obj = json.load(f)
+            for key, val in json_obj.items():
+                self.__objects[key] = eval(val["__class__"])(**val)
