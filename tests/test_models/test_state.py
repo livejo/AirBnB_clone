@@ -21,6 +21,7 @@ class Teststate(unittest.TestCase):
         self.assertTrue(hasattr(state, "id"))
         self.assertTrue(hasattr(state, "created_at"))
         self.assertTrue(hasattr(state, "update_at"))
+
     def test_name_attr(self):
         """
             Test that State has attribute name
