@@ -126,11 +126,12 @@ class HBNBCommand(cmd.Cmd):
         """
         _input = shlex.split(_input)
         query_key = ''
+        keyss = storage.all()
 
         if len(_input) is 0:
             print("** class name missing **")
             return
-        if _input[0] not in self.classes_dict.keys():
+        if _input[0] not in keyss.keys():
             print("** class doesn't exist **")
             return
         if len(_input) is 1:
