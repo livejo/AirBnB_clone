@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
 
         models.storage.all()[query_key].save()
 
-@staticmethod
+    @staticmethod
     def check_for_braces(command, open_brace, close_brace):
         try:
             first_brace = command.index(open_brace)
