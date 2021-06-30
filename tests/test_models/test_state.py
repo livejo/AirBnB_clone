@@ -25,3 +25,6 @@ class Teststate(unittest.TestCase):
         """
             Test that State has attribute name
         """
+        state = State()
+        self.assertTrue(hasattr(state, "name"))
+        self.assertEqual(state.name, "")
