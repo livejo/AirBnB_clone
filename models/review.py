@@ -9,3 +9,4 @@ class Review(BaseModel):
     """ defining User class """
     place_id = ""
     user_id = ""
+    text = ""
