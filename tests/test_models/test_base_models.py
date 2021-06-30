@@ -84,7 +84,6 @@ class TestBaseModel(unittest.TestCase):
                     "created_at",
                     "updated_at",
                     "name",
-                    "num",
                     "__class__"]
         self.assertCountEqual(dict_inst.keys(), attr)
         self.assertEqual(dict_inst['__class__'], 'BaseModel')
