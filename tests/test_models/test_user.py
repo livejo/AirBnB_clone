@@ -10,9 +10,18 @@ from models.review import Review
 from models.user import User
 
 
-class Testuser(unittest.TestCase)
+class Testuser(unittest.TestCase):
     """unit test"""
     def test_User(self):
         """
         Test Class Use
         """
+        my_user = User()
+        my_user.first_name = 'ALX'
+        my_user.last_name = 'SE'
+        my_user.email = '11@gmail.com'
+        my_user.password = '1234'
+        self.assertEqual(my_user.first_name, 'ALX')
+        self.assertEqual(my_user.last_name, 'SE')
+        self.assertEqual(my_user.email, '11@gmail.com')
+        self.assertEqual(my_user.password, '1234')
