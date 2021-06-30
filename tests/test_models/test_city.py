@@ -40,3 +40,9 @@ self.assertEqual(dict_con["__class__"], "City")
         """
         Test attributes of Class City
         """
+my_city = City()
+        my_state = State()
+        my_city.name = "Addis Ababa"
+        my_city.state_id = my_state.id
+        self.assertEqual(my_city.name, 'Addis Ababa')
+        self.assertEqual(my_city.state_id, my_state.id)
