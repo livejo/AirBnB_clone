@@ -9,3 +9,4 @@ class User(BaseModel):
     """ defining User class """
     email = ""
     password = ""
+    first_name = ""
