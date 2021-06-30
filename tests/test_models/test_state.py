@@ -4,3 +4,5 @@
 """
 from models import BaseModel
 from models import State
+import unittest
+import models
