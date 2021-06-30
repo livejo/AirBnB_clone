@@ -25,7 +25,7 @@ class Testplace(unittest.TestCase):
         self.assertIsInstance(place, BaseModel)
         self.assertTrue(hasattr(place, "id"))
         self.assertTrue(hasattr(place, "created_at"))
-        self.assertTrue(hasattr(place, "update_at"))
+        self.assertTrue(hasattr(place, "updated_at"))
 
     def test_place(self):
         """
