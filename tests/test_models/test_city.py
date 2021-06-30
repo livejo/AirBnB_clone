@@ -25,7 +25,7 @@ class Testcity(unittest.TestCase):
         self.assertIsInstance(city, BaseModel)
         self.assertTrue(hasattr(city, "id"))
         self.assertTrue(hasattr(city, "created_at"))
-        self.assertTrue(hasattr(city, "update_at"))
+        self.assertTrue(hasattr(city, "updated_at"))
 
     def test_dict_value(self):
         """
