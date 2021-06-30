@@ -8,7 +8,6 @@ from unittest import mock
 import inspect
 import time
 from datetime import datetime
-import pep8
 import models
 
 
