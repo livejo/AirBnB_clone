@@ -25,3 +25,15 @@ def test_dict_value(self):
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         city = City()
         dict_con = city.to_dict()
+self.assertEqual(dict_con["__class__"], "City")
+        self.assertEqual(type(dict_con["created_at"]), str)
+        self.assertEqual(type(dict_con["updated_at"]), str)
+        self.assertEqual(
+                            dict_con["created_at"],
+                            city.created_at.strftime(time_format)
+                                        )
+        self.assertEqual(
+                            dict_con["updated_at"],
+                            city.updated_at.strftime(time_format))
+
+    def test_city(self):
