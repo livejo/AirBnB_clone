@@ -2,3 +2,5 @@
 """
     Test Case for state Model
 """
+from models import BaseModel
+from models import State
