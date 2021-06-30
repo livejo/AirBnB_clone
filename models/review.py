@@ -7,3 +7,4 @@ from models.base_model import BaseModel
 
 class Review(BaseModel):
     """ defining User class """
+    place_id = ""
