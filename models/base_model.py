@@ -8,8 +8,15 @@ import models
 
 
 class BaseModel:
-    """ defining base model class """
-    if len(kwargs) == 0:
+    """
+    Base Class of AirBnb Console
+    """
+
+    def __init__(self, *args, **kwargs):
+        """
+        Init of Object
+        """
+        if len(kwargs) == 0:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
@@ -25,17 +32,23 @@ class BaseModel:
                     setattr(self, key, val)
 
     def __str__(self):
-        """ string representation """
+        """
+        print the instance
+        """
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
                                          self.__dict__)
 
     def save(self):
-        """ updates attr updated_at """
+        """
+            updates the public instance attribute
+        """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """  returns a dictionary containing all keys/value """
+        """
+            returns a dictionary containing all keys/values
+        """
         temp = dict(self.__dict__)
         temp['__class__'] = self.__class__.__name__
         temp['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
