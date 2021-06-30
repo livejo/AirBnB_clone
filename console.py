@@ -133,7 +133,7 @@ class HBNBCommand(cmd.Cmd):
         if len(_input) is 0:
             print("** class name missing **")
             return
-        if _input[0] not in self.keyss():
+        if _input[0] not in self.keyss:
             print("** class doesn't exist **")
             return
         if len(_input) is 1:
