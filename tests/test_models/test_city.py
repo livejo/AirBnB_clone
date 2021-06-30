@@ -18,14 +18,15 @@ class Testcity(unittest.TestCase):
         self.assertTrue(hasattr(city, "id"))
         self.assertTrue(hasattr(city, "created_at"))
         self.assertTrue(hasattr(city, "updated_at"))
-def test_dict_value(self):
+
+    def test_dict_value(self):
         """
             test dict values
         """
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         city = City()
         dict_con = city.to_dict()
-self.assertEqual(dict_con["__class__"], "City")
+        self.assertEqual(dict_con["__class__"], "City")
         self.assertEqual(type(dict_con["created_at"]), str)
         self.assertEqual(type(dict_con["updated_at"]), str)
         self.assertEqual(
@@ -40,7 +41,7 @@ self.assertEqual(dict_con["__class__"], "City")
         """
         Test attributes of Class City
         """
-my_city = City()
+        my_city = City()
         my_state = State()
         my_city.name = "Addis Ababa"
         my_city.state_id = my_state.id
