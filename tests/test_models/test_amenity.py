@@ -11,7 +11,7 @@ from models.review import Review
 
 
 class Testamenity(unittest.TestCase):
-
+    """unit test"""
     def test_class(self):
         amen = Amenity()
         self.assertEqual(amen.__class__.__name__, "Amenity")
