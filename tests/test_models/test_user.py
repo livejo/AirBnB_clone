@@ -11,3 +11,4 @@ from models.user import User
 
 
 class Testuser(unittest.TestCase)
+    """unit test"""
