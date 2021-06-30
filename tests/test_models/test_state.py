@@ -16,3 +16,8 @@ class Teststate(unittest.TestCase):
         """
             test if state class is sub class of base model
         """
+        state = State()
+        self.assertIsInstance(state, BaseModel)
+        self.assertTrue(hasattr(state, "id"))
+        self.assertTrue(hasattr(state, "created_at"))
+        self.assertTrue(hasattr(state, "update_at"))
