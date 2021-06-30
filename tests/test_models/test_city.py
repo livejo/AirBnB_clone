@@ -18,3 +18,10 @@ class Testcity(unittest.TestCase):
         self.assertTrue(hasattr(city, "id"))
         self.assertTrue(hasattr(city, "created_at"))
         self.assertTrue(hasattr(city, "updated_at"))
+def test_dict_value(self):
+        """
+            test dict values
+        """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        city = City()
+        dict_con = city.to_dict()
