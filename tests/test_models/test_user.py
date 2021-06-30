@@ -7,3 +7,4 @@ from models.place import Place
 from models.amenity import Amenity
 from models.state import State
 from models.review import Review
+from models.user import User
