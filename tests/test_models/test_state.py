@@ -9,3 +9,6 @@ import models
 
 
 class Teststate(unittest.TestCase):
+    """
+        unitesst for state class
+    """
