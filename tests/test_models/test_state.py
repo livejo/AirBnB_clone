@@ -12,3 +12,7 @@ class Teststate(unittest.TestCase):
     """
         unitesst for state class
     """
+    def issub_class(self):
+        """
+            test if state class is sub class of base model
+        """
