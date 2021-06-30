@@ -156,6 +156,98 @@ class HBNBCommand(cmd.Cmd):
 
         models.storage.all()[query_key].save()
 
+@staticmethod
+    def check_for_braces(command, open_brace, close_brace):
+        try:
+            first_brace = command.index(open_brace)
+            second_brace = command.index(close_brace)
+            if command[second_brace + 1] == ")":
+                return first_brace, second_brace
+            else:
+                return False, False
+        except ValueError:
+            return False, False
+
+    def get_list_of_args(self, command):
+        obj_id = ""
+        attr = ""
+        new_val = ""
+        className = ""
+        functionName = ""
+        try:
+            core_args = command.split("(")[0].split(".")  # User.update
+            all_args = command.split("(")[1][:-1]  # *args + **kwargs
+            className = core_args[0]
+            functionName = core_args[1]
+            if all_args != "":
+                first_brace, second_brace = self.check_for_braces(all_args,
+                                                                  "{", "}")
+                if first_brace is not False:
+                    arguments = all_args[:first_brace - 2]
+                else:
+                    arguments = all_args
+                # eliminate any white space
+                arguments = ' '.join(arguments.split())
+                arguments = arguments.split(maxsplit=2, sep=",")
+                obj_id = arguments[0].strip("\" ")
+                attr = arguments[1].strip("\" ")
+                try:
+                    index_brace = arguments[2].index("]")  # if we found "["
+                    new_val = arguments[2][:index_brace + 1].strip("\" ")
+                except Exception:
+                    new_val = arguments[2]  # if we didn't found "["
+            return className, functionName, obj_id, attr, new_val
+        except Exception as ex:
+            # print(ex)
+            return className, functionName, obj_id, attr, new_val
+
+    def default(self, line):
+        """
+            Change Default console action:
+            Usage:
+                <class name>.count()
+                <class name>.all()
+                <class name>.show(<id>)
+                <class name>.destroy(<id>)
+                <class name>.update(<id>, <attribute name>, <attribute value>)
+        """
+        first_brace, second_brace = self.check_for_braces(line, "{", "}")
+        if first_brace is not False:
+            core_string = line[:first_brace]
+            str_dict = line[first_brace: second_brace + 1]
+            dict_args = eval(str_dict)
+            for key, val in dict_args.items():
+                command = core_string + repr(key) + ', ' + repr(val) + ')'
+                self.default(command)
+            return
+        try:
+            args = self.get_list_of_args(line)
+
+            if len(args) > 1:
+                className, functionName, obj_id, attr, new_val = args
+                if inspect.isclass(eval(className)) is True:
+                    arg = className + ' ' + obj_id
+                    if functionName == "all":
+                        return self.do_all(className)
+                    elif functionName == "show":
+                        return self.do_show(arg)
+                    elif functionName == "destroy":
+                        return self.do_destroy(arg)
+                    elif functionName == "update":
+                        return self.do_update(arg + ' ' + attr + ' ' + new_val)
+                    elif functionName == "count":
+                        i = 0
+                        object_container = storage.all()
+                        for obj_id, obj in object_container.items():
+                            if type(obj) is eval(className):
+                                i += 1
+                        print(i)
+            else:
+                print("*** Unknown syntax: {}".format(line))
+                return False
+        except Exception:
+            pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
