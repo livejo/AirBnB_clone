@@ -16,3 +16,4 @@ class Testuser(unittest.TestCase):
         """
         Test Class Use
         """
+        my_user = User()
