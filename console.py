@@ -9,11 +9,14 @@ import models
 from models import BaseModel, User, Amenity, Review, City, Place, State
 
 storage = models.storage
+classes_dict = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
+                "Place": Place, "Review": Review, "State": State, "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
     """ a command line interpreter """
     prompt = '(hbnb)'
+    keyss = classes_dict.keys()
 
     def do_quit(self, s):
         """ exit operation """
@@ -126,12 +129,11 @@ class HBNBCommand(cmd.Cmd):
         """
         _input = shlex.split(_input)
         query_key = ''
-        keyss = storage.all()
 
         if len(_input) is 0:
             print("** class name missing **")
             return
-        if _input[0] not in keyss.keys():
+        if _input[0] not in self.keyss():
             print("** class doesn't exist **")
             return
         if len(_input) is 1:
