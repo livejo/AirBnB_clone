@@ -9,26 +9,25 @@ import models
 
 class BaseModel:
     """ defining base model class """
-    def __init__(self, *args, **kwargs):
-        """ defines id, created_at and updated_at """
-        if kwargs:
-            for keys, val in kwargs.items():
-                if keys != "__class__":
-                    if keys == "created_at" or keys == "updated_at":
-                        val = datetime.strptime(val,
-                                                "%Y-%m-%dT%H:%M:%S.%f")
-                    setattr(self, keys, val)
-        else:
+    if len(kwargs) == 0:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
             models.storage.new(self)
             models.storage.save()
+        else:
+            kwargs["created_at"] = datetime.strptime(kwargs["created_at"],
+                                                     "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs["updated_at"] = datetime.strptime(kwargs["updated_at"],
+                                                     "%Y-%m-%dT%H:%M:%S.%f")
+            for key, val in kwargs.items():
+                if "__class__" not in key:
+                    setattr(self, key, val)
 
     def __str__(self):
         """ string representation """
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__,
-                                         self.id, self.__dict__)
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id,
+                                         self.__dict__)
 
     def save(self):
         """ updates attr updated_at """
@@ -37,8 +36,8 @@ class BaseModel:
 
     def to_dict(self):
         """  returns a dictionary containing all keys/value """
-        temp = self.__dict__.copy()
-        temp["__class__"] = self.__class__.__name__
-        temp["created_at"] = self.created_at.isoformat()
-        temp["updated_at"] = self.updated_at.isoformat()
+        temp = dict(self.__dict__)
+        temp['__class__'] = self.__class__.__name__
+        temp['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        temp['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         return temp
