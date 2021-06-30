@@ -49,11 +49,11 @@ class HBNBCommand(cmd.Cmd):
         arg = s.split()
         if len(arg) == 0:
             print('** class name missing **')
-        else:
-            try:
-                eval(s[0])
-            except Exception:
-                print("** class doesn't exist **")
+        try:
+            eval(s[0])
+        except Exception:
+            print("** class doesn't exist **")
+            return
         if len(arg) == 1:
             print("** instance id missing **")
         else:
