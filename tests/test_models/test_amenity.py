@@ -31,7 +31,7 @@ class Testamenity(unittest.TestCase):
         """Test attributes of Class Amenity"""
         amenity = Amenity()
         amenity.name = "kal"
-        self.assertEqual(amenity.name, 'Kal')
+        self.assertEqual(amenity.name, 'kal')
 
     def test_dict_value(self):
         """
@@ -39,7 +39,7 @@ class Testamenity(unittest.TestCase):
         """
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         inst = Amenity()
-        dict_con = insta.to_dict()
+        dict_con = inst.to_dict()
         self.assertEqual(dict_con["__class__"], "Amenity")
         self.assertEqual(type(dict_con["created_at"]), str)
         self.assertEqual(type(dict_con["updated_at"]), str)
