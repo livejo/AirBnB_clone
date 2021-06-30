@@ -130,6 +130,9 @@ class HBNBCommand(cmd.Cmd):
         if len(_input) is 0:
             print("** class name missing **")
             return
+        if _input[0] not in self.classes_dict.keys():
+            print("** class doesn't exist **")
+            return
         if len(_input) is 1:
             print("** instance id missing **")
             return
