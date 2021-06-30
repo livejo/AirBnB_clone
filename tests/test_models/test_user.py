@@ -21,3 +21,4 @@ class Testuser(unittest.TestCase):
         my_user.last_name = 'SE'
         my_user.email = '11@gmail.com'
         my_user.password = '1234'
+        self.assertEqual(my_user.first_name, 'ALX')
