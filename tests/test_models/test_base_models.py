@@ -4,6 +4,7 @@
 """
 from models import BaseModel
 import unittest
+from unittest import mock
 import inspect
 import time
 from datetime import datetime
@@ -40,3 +41,68 @@ class TestBaseModel(unittest.TestCase):
         res = pep8s.check_files(['models/base_model.py'])
         self.assertEqual(res.total_errors, 0,
                          "Found code style errors (and warnings).")
+
+    def test_str(self):
+        """
+            test str method
+        """
+        instance = BaseModel()
+        correct_str = "[BaseModel] ({}) {}".format(
+                                                    instance.id,
+                                                    instance.__dict__
+                                                        )
+        self.assertEqual(correct_str, str(instance))
+
+    def to_dict_value(self):
+        """
+            test return value of dict
+        """
+        ti = "%Y-%m-%dT%H:%M:%S.%f"
+        inst = BaseModel()
+        dict_base = instance.to_dict()
+        self.assertEqual(dict_base["__class__"], "BaseModel")
+        self.assertEqual(type(dict_base["created_at"]), str)
+        self.assertEqual(type(dict_base["updated_at"]), str)
+        self.assertEqual(
+                            dict_base["created_at"],
+                            inst.created_at.strftime(ti)
+                                    )
+        self.assertEqual(
+                            dict_base["updated_at"],
+                            inst.updated_at.strftime(ti)
+                                    )
+
+    def test_to_dict(self):
+        """
+            test to dic method
+        """
+        inst = BaseModel()
+        inst.name = "kal"
+        inst.num = 08
+        dict_inst = inst.to_dict()
+        attr = [
+                    "id",
+                    "created_at",
+                    "updated_at",
+                    "name",
+                    "num",
+                    "__class__"]
+        self.assertCountEqual(dict_inst.keys(), attr)
+        self.assertEqual(dict_inst['__class__'], 'BaseModel')
+        self.assertEqual(dict_inst['name'], "kal")
+        self.assertEqual(dict_inst['num'], 08)
+
+    @mock.patch("models.storage")
+    def test_save(self, mock_storage):
+        """
+            test save and update
+        """
+        instance = BaseModel()
+        old_value_created = instance.created_at
+        old_value_update = instance.updated_at
+        instance.save()
+        new_value_created = instance.created_at
+        new_value_updated = instance.updated_at
+        self.assertNotEqual(old_value_update, new_value_updated)
+        self.assertEqual(old_value_created, new_value_created)
+        self.assertTrue(mock_storage.save.called)
