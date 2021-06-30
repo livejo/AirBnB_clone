@@ -78,7 +78,6 @@ class TestBaseModel(unittest.TestCase):
         """
         inst = BaseModel()
         inst.name = "kal"
-        inst.num = 08
         dict_inst = inst.to_dict()
         attr = [
                     "id",
@@ -90,7 +89,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertCountEqual(dict_inst.keys(), attr)
         self.assertEqual(dict_inst['__class__'], 'BaseModel')
         self.assertEqual(dict_inst['name'], "kal")
-        self.assertEqual(dict_inst['num'], 08)
 
     @mock.patch("models.storage")
     def test_save(self, mock_storage):
