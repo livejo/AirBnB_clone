@@ -13,7 +13,7 @@ from models.user import User
 
 class Testcity(unittest.TestCase):
 
-    def test_pep8__city(self):
+    def test_pep8_city(self):
         """Test PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['models/city.py'])
@@ -21,12 +21,29 @@ class Testcity(unittest.TestCase):
                          "Found code errors.")
 
     def test_class(self):
-        city1 = City()
-        self.assertEqual(city1.__class__.__name__, "City")
+        city = City()
+        self.assertIsInstance(city, BaseModel)
+        self.assertTrue(hasattr(city, "id"))
+        self.assertTrue(hasattr(city, "created_at"))
+        self.assertTrue(hasattr(city, "update_at"))
 
-    def test_Base(self):
-        city1 = City()
-        self.assertTrue(issubclass(city1.__class__, BaseModel))
+    def test_dict_value(self):
+        """
+            test dict values
+        """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        city = City()
+        dict_con = city.to_dict()
+        self.assertEqual(dict_con["__class__"], "City")
+        self.assertEqual(type(dict_con["created_at"]), str)
+        self.assertEqual(type(dict_con["updated_at"]), str)
+        self.assertEqual(
+                            dict_con["created_at"],
+                            city.created_at.strftime(time_format)
+                                        )
+        self.assertEqual(
+                            dict_con["updated_at"],
+                            city.updated_at.strftime(time_format))
 
     def test_city(self):
         """
