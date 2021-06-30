@@ -15,7 +15,7 @@ classes_dict = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
 
 class HBNBCommand(cmd.Cmd):
     """ a command line interpreter """
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     keyss = classes_dict.keys()
 
     def do_quit(self, s):
