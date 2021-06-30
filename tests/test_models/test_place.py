@@ -13,7 +13,7 @@ from models.user import User
 
 class Testplace(unittest.TestCase):
 
-    def test_pep8_conformance_place(self):
+    def test_pep8_place(self):
         """Test  PEP8."""
         pep8s = pep8.StyleGuide(quiet=True)
         result = pep8s.check_files(['models/place.py'])
@@ -24,7 +24,7 @@ class Testplace(unittest.TestCase):
         place1 = Place()
         self.assertEqual(place1.__class__.__name__, "Place")
 
-    def test_father(self):
+    def test_Base(self):
         place1 = Place()
         self.assertTrue(issubclass(place1.__class__, BaseModel))
 
