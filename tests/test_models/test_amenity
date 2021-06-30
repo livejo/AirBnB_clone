@@ -12,7 +12,7 @@ from models.review import Review
 
 class Testamenity(unittest.TestCase):
 
-    def test_pep8_conformance_amenity(self):
+    def test_pep8_amenity(self):
         """Test that we conform to PEP8."""
         pe = pep8.StyleGuide(quiet=True)
         res = pe.check_files(['models/amenity.py'])
@@ -23,12 +23,12 @@ class Testamenity(unittest.TestCase):
         amen = Amenity()
         self.assertEqual(amen.__class__.__name__, "Amenity")
 
-    def test_father(self):
+    def test_base(self):
         amen = Amenity()
         self.assertTrue(issubclass(amen.__class__, BaseModel))
 
     def test_amenity(self):
         """Test attributes of Class Amenity"""
         amenity = Amenity()
-        amenity.name = "Wi-Fi"
+        amenity.name = "kal"
         self.assertEqual(amenity.name, 'Kal')
