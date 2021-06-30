@@ -37,3 +37,6 @@ self.assertEqual(dict_con["__class__"], "City")
                             city.updated_at.strftime(time_format))
 
     def test_city(self):
+        """
+        Test attributes of Class City
+        """
