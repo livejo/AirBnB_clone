@@ -21,12 +21,11 @@ class Testplace(unittest.TestCase):
                          "Found code errors.")
 
     def test_class(self):
-        place1 = Place()
-        self.assertEqual(place1.__class__.__name__, "Place")
-
-    def test_Base(self):
-        place1 = Place()
-        self.assertTrue(issubclass(place1.__class__, BaseModel))
+        place = Place()
+        self.assertIsInstance(place, BaseModel)
+        self.assertTrue(hasattr(place, "id"))
+        self.assertTrue(hasattr(place, "created_at"))
+        self.assertTrue(hasattr(place, "update_at"))
 
     def test_place(self):
         """
@@ -65,3 +64,21 @@ class Testplace(unittest.TestCase):
         self.assertTrue(type(my_place.longitude), float)
         self.assertEqual(my_place.amenity_ids, str(my_amenity.id))
         self.assertTrue(type(my_place.amenity_ids), str)
+
+    def test_dict_value(self):
+        """
+            test dict values
+        """
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
+        place = Place()
+        dict_con = place.to_dict()
+        self.assertEqual(dict_con["__class__"], "Place")
+        self.assertEqual(type(dict_con["created_at"]), str)
+        self.assertEqual(type(dict_con["updated_at"]), str)
+        self.assertEqual(
+                            dict_con["created_at"],
+                            place.created_at.strftime(time_format)
+                                        )
+        self.assertEqual(
+                            dict_con["updated_at"],
+                            place.updated_at.strftime(time_format))
