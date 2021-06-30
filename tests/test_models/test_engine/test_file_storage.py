@@ -78,5 +78,6 @@ class TestFileStorage(unittest.TestCase):
         s.storage = FileStorage()
         s.path = "file.json"
 
+
 if __name__ == "__main__":
     unittest.main()
