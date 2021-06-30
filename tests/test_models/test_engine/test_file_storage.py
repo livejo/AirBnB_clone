@@ -9,7 +9,6 @@ import os
 
 class TestFileStorage(unittest.TestCase):
     """unit test"""
-
     def test_doc1(self):
         """test docstring for module"""
         res = "Module has no documentation"

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Amenity"""
 import unittest
-import pep8
 from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
@@ -11,14 +10,7 @@ from models.review import Review
 
 
 class Testamenity(unittest.TestCase):
-
-    def test_pep8_amenity(self):
-        """Test that we conform to PEP8."""
-        pe = pep8.StyleGuide(quiet=True)
-        res = pe.check_files(['models/amenity.py'])
-        self.assertEqual(res.total_errors, 0,
-                         "Found code style errors (and warnings).")
-
+    """unit test"""
     def test_class(self):
         amen = Amenity()
         self.assertEqual(amen.__class__.__name__, "Amenity")

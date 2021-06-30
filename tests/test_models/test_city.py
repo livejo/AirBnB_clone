@@ -12,14 +12,7 @@ from models.user import User
 
 
 class Testcity(unittest.TestCase):
-
-    def test_pep8_city(self):
-        """Test PEP8."""
-        pep8s = pep8.StyleGuide(quiet=True)
-        result = pep8s.check_files(['models/city.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code errors.")
-
+    """unit test"""
     def test_class(self):
         city = City()
         self.assertIsInstance(city, BaseModel)
