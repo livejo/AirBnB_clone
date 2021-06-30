@@ -18,3 +18,4 @@ class Testuser(unittest.TestCase):
         """
         my_user = User()
         my_user.first_name = 'ALX'
+        my_user.last_name = 'SE'
