@@ -12,7 +12,7 @@ from models.user import User
 
 
 class Testplace(unittest.TestCase):
-
+    """unit test"""
     def test_class(self):
         place = Place()
         self.assertIsInstance(place, BaseModel)
