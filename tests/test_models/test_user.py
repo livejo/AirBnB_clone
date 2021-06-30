@@ -14,3 +14,4 @@ class Testuser(unittest.TestCase):
     """unit test"""
     def test_User(self):
         """
+        Test Class Use
