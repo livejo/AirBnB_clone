@@ -130,13 +130,13 @@ class HBNBCommand(cmd.Cmd):
         _input = shlex.split(_input)
         query_key = ''
 
-        if len(_input) is 0:
+        if len(_input) == 0:
             print("** class name missing **")
             return
         if _input[0] not in self.keyss:
             print("** class doesn't exist **")
             return
-        if len(_input) is 1:
+        if len(_input) == 1:
             print("** instance id missing **")
             return
         if len(_input) > 1:
@@ -144,10 +144,10 @@ class HBNBCommand(cmd.Cmd):
         if query_key not in models.storage.all().keys():
             print("** no instance found **")
             return
-        if len(_input) is 2:
+        if len(_input) == 2:
             print('** attribute name missing **')
             return
-        if len(_input) is 3:
+        if len(_input) == 3:
             print('** value missing **')
             return
         key_name = _input[2]
