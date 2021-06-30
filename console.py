@@ -42,27 +42,31 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 print("** class doesn't exist **")
 
-    def do_show(self, s):
-        """ Prints the string representation of an instance
-            based on the class name and id
+     def do_show(self, arg):
         """
-        arg = s.split()
-        if len(arg) == 0:
-            print('** class name missing **')
+        Show command to Prints the string representation of an instance based
+        on
+        the class name and id
+        Usage: show <Class_Name> <obj_id>
+        """
+        args = arg.split()
+        if len(args) == 0:
+            print("** class name missing **")
+            return
         try:
-            eval(s[0])
+            eval(args[0])
         except Exception:
             print("** class doesn't exist **")
             return
-        if len(arg) == 1:
+        if len(args) == 1:
             print("** instance id missing **")
         else:
             storage.reload()
-            obj = storage.all()
-            key_id = arg[0] + "." + arg[1]
-            if key_id in obj:
-                val = obj[key_id]
-                print(val)
+            container_obj = storage.all()
+            key_id = args[0] + "." + args[1]
+            if key_id in container_obj:
+                value = container_obj[key_id]
+                print(value)
             else:
                 print("** no instance found **")
 
