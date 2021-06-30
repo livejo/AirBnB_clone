@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 print("** class doesn't exist **")
 
-     def do_show(self, arg):
+    def do_show(self, arg):
         """
         Show command to Prints the string representation of an instance based
         on
