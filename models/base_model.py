@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-a base 
+a base class for other classes to use from it
 """
 from datetime import datetime
 from uuid import uuid4
