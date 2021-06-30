@@ -12,7 +12,7 @@ from models.user import User
 
 
 class Testuser(unittest.TestCase):
-
+    """unit test"""
     def test_User(self):
         """
         Test Class Use
