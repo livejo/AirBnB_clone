@@ -17,11 +17,11 @@ class Testuser(unittest.TestCase):
         Test Class Use
         """
         my_user = User()
-        my_user.first_name = 'ALX'
-        my_user.last_name = 'SE'
-        my_user.email = '11@gmail.com'
-        my_user.password = '1234'
-        self.assertEqual(my_user.first_name, 'ALX')
-        self.assertEqual(my_user.last_name, 'SE')
-        self.assertEqual(my_user.email, '11@gmail.com')
-        self.assertEqual(my_user.password, '1234')
+        self.assertTrue(hasattr(my_user, "first_name"))
+        self.assertEqual(my_user.first_name, "")
+        self.assertTrue(hasattr(my_user, "last_name"))
+        self.assertEqual(my_user.last_name, "")
+        self.assertTrue(hasattr(my_user, "email"))
+        self.assertEqual(my_user.email, "")
+        self.assertTrue(hasattr(my_user, "password"))
+        self.assertEqual(my_user.password, "")
