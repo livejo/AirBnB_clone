@@ -172,6 +172,24 @@ class HBNBCommand(cmd.Cmd):
                     if key.startswith(words[0]):
                         count += 1
                 print(count)
+        elif words[0] in classes_dict and words[1].startswith('show'):
+            arg = words[1].split('"')
+            if len(arg) == 3:
+                arg1 = words[0] + " " + arg[1]
+                self.do_show(arg1)
+        elif words[0] in classes_dict and words[1].startswith('destroy'):
+            arg = words[1].split('"')
+            if len(arg) == 3:
+                arg1 = words[0] + " " + arg[1]
+                self.do_destroy(arg1)
+        elif words[0] in classes_dict and words[1].startswith('update'):
+            start = 'update('
+            end = ')'
+            arg = re.findall(re.escape(start)+"(.*)"+re.escape(end), words[1])[0]
+            arg = arg.replace('(', '').replace(')', '').replace(',', '')
+            arg = arg.replace('"', '')
+            arg1 = words[0] + " " + arg
+            self.do_update(arg1)
         else:
             print("*** Unknown syntax: {}".format(inp))
 
