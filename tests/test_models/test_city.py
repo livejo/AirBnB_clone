@@ -13,11 +13,8 @@ from models.user import User
 class Testcity(unittest.TestCase):
     """unit test"""
     def test_class(self):
-        city = City()
-        self.assertIsInstance(city, BaseModel)
-        self.assertTrue(hasattr(city, "id"))
-        self.assertTrue(hasattr(city, "created_at"))
-        self.assertTrue(hasattr(city, "updated_at"))
+        city1 = City()
+        self.assertEqual(city1.__class__.__name__, "City")
 
     def test_dict_value(self):
         """
@@ -36,6 +33,10 @@ class Testcity(unittest.TestCase):
         self.assertEqual(
                             dict_con["updated_at"],
                             city.updated_at.strftime(time_format))
+
+    def test_base(self):
+        city1 = City()
+        self.assertTrue(issubclass(city1.__class__, BaseModel))
 
     def test_city(self):
         """
