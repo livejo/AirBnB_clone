@@ -19,43 +19,100 @@ class Testplace(unittest.TestCase):
         self.assertTrue(hasattr(place, "created_at"))
         self.assertTrue(hasattr(place, "updated_at"))
 
-    def test_place(self):
+    def test_city_id_attr(self):
         """
-        Test attributes of Class Place
+            Test Class attribute
         """
-        my_amenity = Amenity()
-        my_city = City()
-        my_user = User()
-        my_place = Place()
-        my_place.city_id = my_city.id
-        my_place.user_id = my_user.id
-        my_place.name = 'Addis Ababa'
-        my_place.description = 'Capital city'
-        my_place.number_rooms = 4
-        my_place.number_bathrooms = 2
-        my_place.max_guest = 4
-        my_place.price_by_night = 200
-        my_place.latitude = 25.0342808
-        my_place.longitude = -77.3962784
-        my_place.amenity_ids = str(my_amenity.id)
-        self.assertEqual(my_place.city_id, my_city.id)
-        self.assertEqual(my_place.user_id, my_user.id)
-        self.assertEqual(my_place.name, 'Addis Ababa')
-        self.assertEqual(my_place.description, 'Capital city')
-        self.assertEqual(my_place.number_rooms, 4)
-        self.assertTrue(type(my_place.number_rooms), int)
-        self.assertEqual(my_place.number_bathrooms, 2)
-        self.assertTrue(type(my_place.number_bathrooms), int)
-        self.assertEqual(my_place.max_guest, 4)
-        self.assertTrue(type(my_place.max_guest), int)
-        self.assertEqual(my_place.price_by_night, 200)
-        self.assertTrue(type(my_place.price_by_night), int)
-        self.assertEqual(my_place.latitude, 25.0342808)
-        self.assertTrue(type(my_place.latitude), float)
-        self.assertEqual(my_place.longitude, -77.3962784)
-        self.assertTrue(type(my_place.longitude), float)
-        self.assertEqual(my_place.amenity_ids, str(my_amenity.id))
-        self.assertTrue(type(my_place.amenity_ids), str)
+        place = Place()
+        self.assertTrue(hasattr(place, "city_id"))
+        self.assertEqual(place.city_id, "")
+
+    def test_user_id_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "user_id"))
+        self.assertEqual(place.user_id, "")
+
+    def test_name_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "name"))
+        self.assertEqual(place.name, "")
+
+    def test_description_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "description"))
+        self.assertEqual(place.description, "")
+
+    def test_number_rooms_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "number_rooms"))
+        self.assertEqual(type(place.number_rooms), int)
+        self.assertEqual(place.number_rooms, 0)
+
+    def test_number_bathrooms_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "number_bathrooms"))
+        self.assertEqual(type(place.number_bathrooms), int)
+        self.assertEqual(place.number_bathrooms, 0)
+
+    def test_max_guest_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "max_guest"))
+        self.assertEqual(type(place.max_guest), int)
+        self.assertEqual(place.max_guest, 0)
+
+    def test_price_by_night_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "price_by_night"))
+        self.assertEqual(type(place.price_by_night), int)
+        self.assertEqual(place.price_by_night, 0)
+
+    def test_latitude_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "latitude"))
+        self.assertEqual(type(place.latitude), float)
+        self.assertEqual(place.latitude, 0.0)
+
+    def test_latitude_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "longitude"))
+        self.assertEqual(type(place.longitude), float)
+        self.assertEqual(place.longitude, 0.0)
+
+    def test_amenity_ids_attr(self):
+        """
+            Test Class attribute
+        """
+        place = Place()
+        self.assertTrue(hasattr(place, "amenity_ids"))
+        self.assertEqual(type(place.amenity_ids), list)
+        self.assertEqual(len(place.amenity_ids), 0)
 
     def test_dict_value(self):
         """
