@@ -43,8 +43,7 @@ class Testcity(unittest.TestCase):
         Test attributes of Class City
         """
         my_city = City()
-        my_state = State()
-        my_city.name = "Addis Ababa"
-        my_city.state_id = my_state.id
-        self.assertEqual(my_city.name, 'Addis Ababa')
-        self.assertEqual(my_city.state_id, my_state.id)
+        self.assertTrue(hasattr(mycity, "name"))
+        self.assertEqual(my_city.name, "")
+        self.assertTrue(hasattr(mycity, "state_id"))
+        self.assertEqual(my_city.state_id, "")
