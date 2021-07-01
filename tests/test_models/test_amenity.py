@@ -22,8 +22,8 @@ class Testamenity(unittest.TestCase):
     def test_amenity(self):
         """Test attributes of Class Amenity"""
         amenity = Amenity()
-        amenity.name = "kal"
-        self.assertEqual(amenity.name, 'kal')
+        self.Assert true(hasattr(amenity, "name"))
+        self.assertEqual(amenity.name, "")
 
     def test_dict_value(self):
         """
