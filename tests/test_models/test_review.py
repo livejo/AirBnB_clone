@@ -24,12 +24,10 @@ class Testreview(unittest.TestCase):
         """
         Test review
         """
-        my_place = Place()
-        my_user = User()
         my_review = Review()
-        my_review.place_id = my_place.id
-        my_review.user_id = my_user.id
-        my_review.text = 'ALX'
-        self.assertEqual(my_review.place_id, my_place.id)
-        self.assertEqual(my_review.user_id, my_user.id)
-        self.assertEqual(my_review.text, 'ALX')
+        self.assertTrue(hasattr(my_review, "place_id"))
+        self.assertEqual(my_review.place_id, "")
+        self.assertTrue(hasattr(my_review, "user_id"))
+        self.assertEqual(my_review.user_id, "")
+        self.assertTrue(hasattr(my_review, "text"))
+        self.assertEqual(my_review.text, "")
