@@ -8,9 +8,9 @@
     justify-content: flex-start;
     align-items: center;
 }
-.locations .amenities{
+ .amenities{
     height: 100%;
-    width: 75%;
+    width: 25%;
     padding-left: 50px;
 }
 .locations {
