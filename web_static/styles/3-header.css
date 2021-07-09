@@ -4,9 +4,9 @@ height: 70px;
 width: 100%;
 border-bottom: 1px solid #CCCCCC;
 }
-img{
+header .logo{
+background-image: url("../images/logo.png");
 margin-left:20px;
-margin-right: auto;
-padding: 0px;
 background-repeat: no-repeat;
+height: 100%;
 }
