@@ -1,15 +1,9 @@
-
-body div.container section.places {
+body div.container section.places    {
     text-align: left;
     vertical-align: top;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.places {
-text-align: top;
-font-size: 30px;
 }
 article {
 	width: 390px;
@@ -23,7 +17,7 @@ section.places article h2 {
 	font-size: 30px;
 	text-align: center;
 }
-section.places article h1 {
+section.places h1 {
 	font-size: 30px;
 	flex: 100%;
 }
